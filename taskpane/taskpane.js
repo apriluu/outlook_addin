@@ -5,8 +5,14 @@
 /* global document, Office */
 
 
-console.log("taskpane.js carregat");
-
+Office.onReady((info) => {
+  console.log("Host: ", info.host);
+  if (info.host === Office.HostType.Outlook) {
+    document.getElementById("sideload-msg").style.display = "none";
+    document.getElementById("app-body").style.display = "flex";
+    document.getElementById("run").onclick = run;
+  }
+});
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
