@@ -27,7 +27,7 @@
   </Requirements>
 
   <FormSettings>
-    <Form xsi:type="ItemRead">
+    <Form xsi:type="mailappor:ItemRead">
       <DesktopSettings>
         <SourceLocation DefaultValue="https://apriluu.github.io/outlook_addin/taskpane/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
@@ -64,7 +64,6 @@
               <Group id="msgReadGroup">
                 <Label resid="GroupLabel"/>
                 <Control xsi:type="mailappor:Button" id="msgReadOpenPaneButton">
-                  <Label resid="TaskpaneButton.Label"/>
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
                     <Title resid="TaskpaneButton.Label"/>
