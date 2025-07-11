@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0">
+
+
   <Id>d821bb18-c6fd-42fa-846c-394c55935d81</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
@@ -10,7 +15,7 @@
   <HighResolutionIconUrl DefaultValue="https://apriluu.github.io/outlook_addin/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
+    <AppDomain>https://apriluu.github.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -20,34 +25,45 @@
       <Set Name="Mailbox" MinVersion="1.1"/>
     </Sets>
   </Requirements>
+
   <FormSettings>
-    <Form xsi:type="ItemRead">
+    <Form xsi:type="mailappor:ItemRead">
       <DesktopSettings>
         <SourceLocation DefaultValue="https://apriluu.github.io/outlook_addin/taskpane/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
   </FormSettings>
+
   <Permissions>ReadWriteItem</Permissions>
-  <Rule xsi:type="RuleCollection" Mode="Or">
-    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+
+  <Rule xsi:type="mailappor:RuleCollection" Mode="Or">
+    <Rule xsi:type="mailappor:ItemIs" ItemType="Message" FormType="Read"/>
   </Rule>
+
+
   <DisableEntityHighlighting>false</DisableEntityHighlighting>
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+                  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+                  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0">
+
+
     <Requirements>
       <bt:Sets DefaultMinVersion="1.3">
         <bt:Set Name="Mailbox"/>
       </bt:Sets>
     </Requirements>
+
     <Hosts>
-      <Host xsi:type="MailHost">
+      <Host xsi:type="mailappor:MailHost">
         <DesktopFormFactor>
           <FunctionFile resid="Commands.Url"/>
-          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+          <ExtensionPoint xsi:type="mailappor:MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
                 <Label resid="GroupLabel"/>
-                <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                <Control xsi:type="mailappor:Button" id="msgReadOpenPaneButton">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
                     <Title resid="TaskpaneButton.Label"/>
@@ -58,11 +74,11 @@
                     <bt:Image size="32" resid="Icon.32x32"/>
                     <bt:Image size="80" resid="Icon.80x80"/>
                   </Icon>
-                  <Action xsi:type="ShowTaskpane">
+                  <Action xsi:type="mailappor:ShowTaskpane">
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
-                <Control xsi:type="Button" id="ActionButton">
+                <Control xsi:type="mailappor:Button" id="ActionButton">
                   <Label resid="ActionButton.Label"/>
                   <Supertip>
                     <Title resid="ActionButton.Label"/>
@@ -73,7 +89,7 @@
                     <bt:Image size="32" resid="Icon.32x32"/>
                     <bt:Image size="80" resid="Icon.80x80"/>
                   </Icon>
-                  <Action xsi:type="ExecuteFunction">
+                  <Action xsi:type="mailappor:ExecuteFunction">
                     <FunctionName>action</FunctionName>
                   </Action>
                 </Control>
@@ -83,6 +99,7 @@
         </DesktopFormFactor>
       </Host>
     </Hosts>
+
     <Resources>
       <bt:Images>
         <bt:Image id="Icon.16x16" DefaultValue="https://apriluu.github.io/outlook_addin/icon-16.png"/>
@@ -94,8 +111,7 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://apriluu.github.io/outlook_addin/taskpane/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <SupportUrl DefaultValue="https://apriluu.github.io/outlook_addin/help.html"/>
-        <AppDomain>https://apriluu.github.io</AppDomain>
+        <bt:String id="GroupLabel" DefaultValue="FiltradorOfertes Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
         <bt:String id="ActionButton.Label" DefaultValue="Perform an action"/>
       </bt:ShortStrings>
@@ -104,5 +120,7 @@
         <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
       </bt:LongStrings>
     </Resources>
+
   </VersionOverrides>
+
 </OfficeApp>
